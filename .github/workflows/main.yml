@@ -81,7 +81,7 @@ jobs:
       
       # Step 3
       - name: Upload to S3
-        run: aws s3 cp api.zip s3://fast-torch-lambda/api.zip
+        run: aws s3 cp api.zip s3://fast-torch-lambda-bucket/api.zip
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -89,7 +89,7 @@ jobs:
       
       # Step 4
       - name: Deploy new Lambda
-        run: aws lambda update-function-code --function-name fast-torch-lambda --s3-bucket fast-torch-lambda --s3-key api.zip
+        run: aws lambda update-function-code --function-name fast-torch-lambda --s3-bucket fast-torch-lambda-bucket --s3-key api.zip
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
