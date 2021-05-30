@@ -28,7 +28,7 @@ def build_model(src_vocab_size, tgt_vocab_size, device):
     model = Seq2Seq(enc, dec, device).to(device)
 
     print("trying to load model...")
-    model.load_state_dict(torch.load(MODEL_PATH))
+    model.load_state_dict(torch.load(MODEL_PATH), map_location=device)
     print("model loaded 🎉")
     
     return model
