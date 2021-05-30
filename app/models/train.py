@@ -108,7 +108,7 @@ def run(batch_size:int, epochs:int, model_path: str=None):
 
     if model_path is not None:
         print("trying to load model...")
-        model.load_state_dict(torch.load(model_path))
+        model.load_state_dict(torch.load(model_path, map_location=device))
         print("model loaded 🎉")
     else:
         print("Initializing weights...")
